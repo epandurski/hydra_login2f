@@ -23,7 +23,7 @@ COPY . .
 RUN python -m compileall .
 
 # Ensure flask is not bugged by an .env file.
-RUN rm .env
+RUN rm -f .env
 
 # Configure alembic to use JSON logging.
 RUN docker_flask/set_json_log_handler.py migrations/alembic.ini
