@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+pudb = "*"
+python-dotenv = "*"
+
+[packages]
+flask-env = "*"
+flask-babel = "*"
+flask-migrate = "*"
+redis = "*"
+flask-mail = "*"
+requests = "*"
+user-agents = "*"
+"psycopg2-binary" = "*"
+flask-redis = "*"
+flask-signalbus = "*"
+
+[requires]
+python_version = "3.5"

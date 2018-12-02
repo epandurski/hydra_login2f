@@ -1,0 +1,6 @@
+{% trans site=config.SITE_TITLE, email=email -%}
+Your email address "{{email}}" is already registered on {{site}}.
+
+If you received this email by mistake, simply ignore it.
+{% endtrans %}
+{% include '_email_signature.txt' %}

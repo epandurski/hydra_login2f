@@ -1,0 +1,12 @@
+{% extends "message.html" %}
+
+{% block message %}
+  <p class="failure-message-icon"></p>
+  <p>
+    {% trans new_email='<strong class="email">{}</strong>'.format(new_email)|safe %}
+      The email address on your account can not be changed to
+      {{new_email}}. A different account is already registered with
+      this email address.
+    {% endtrans %}
+  </p>
+{% endblock message %}

@@ -1,0 +1,22 @@
+{% extends "message.html" %}
+
+{% block message %}
+  <p class="email-message-icon"></p>
+  <p>
+    {% trans email='<strong class="email">{}</strong>'.format(email)|safe %}
+      An email has been sent to {{email}}. Please check your inbox,
+      and click on the link provided there.
+    {% endtrans %}
+  </p>
+  {% with login_challenge=request.args.login_challenge, login_url=request.args.login_url %}
+    {% if login_challenge %}
+      <p>
+        <a class="login-link" href="{{url_for('.login_form', login_challenge=login_challenge)|safe}}">{% trans %}Go to login page{% endtrans %}</a>
+      </p>
+    {% elif login_url %}
+      <p>
+        <a class="login-link" href="{{login_url}}">{% trans %}Go to login page{% endtrans %}</a>
+      </p>
+    {% endif %}
+  {% endwith %}
+{% endblock message %}

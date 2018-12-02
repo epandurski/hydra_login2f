@@ -1,0 +1,56 @@
+{% extends "form.html" %}
+
+{% block form_header %}
+  {% trans %}Login{% endtrans %}
+{% endblock form_header %}
+
+{% block form_body %}
+  <form action="" method="POST" id="login-form">
+    <p>
+      <label for="email">{% trans %}Email{% endtrans %}</label>
+      <input id="email"
+             name="email"
+             type="email"
+             value="{{request.form.get('email', '')}}"
+             placeholder="{% trans %}Enter your email{% endtrans %}"
+             maxlength="254"
+             required
+             >
+    </p>
+    <p>
+      <label for="password">{% trans %}Password{% endtrans %}</label>
+      <input id="password"
+             name="password"
+             type="password"
+             placeholder="{% trans %}Enter your password{% endtrans %}"
+             required
+             >
+    </p>
+    <p class="remember-me-checkbox">
+      <label for="remember_me" onclick="return false">{% trans %}Remember me on this computer{% endtrans %}</label>
+      <input id="remember_me"
+             name="remember_me"
+             type="checkbox"
+             {% if 'remember_me' in request.form %}checked{% endif %}
+             >
+    </p>
+    <p>
+      <input type="submit" value="{% trans %}Log in{% endtrans %}">
+    </p>
+  </form>
+{% endblock form_body %}
+
+{% block form_footer %}
+  {% with login_challenge=request.args.login_challenge %}
+    {% autoescape false %}
+      <ul class="login-footer-links">
+        <li><a href="{{url_for('.signup', login_challenge=login_challenge)}}">{% trans %}Create a new account{% endtrans %}</a></li>
+        <li><a href="{{url_for('.signup', login_challenge=login_challenge, recover='true')}}">{% trans %}Forgot password?{% endtrans %}</a></li>
+        {% if config.USE_RECOVERY_CODE %}
+          <li><a href="{{url_for('.change_recovery_code', login_challenge=login_challenge)}}">{% trans %}Lost your recovery code?{% endtrans %}</a></li>
+          <li><a href="{{url_for('.change_email_login', login_challenge=login_challenge)}}">{% trans %}Lost access to your email?{% endtrans %}</a></li>
+        {% endif %}
+      </ul>
+    {% endautoescape %}
+  {% endwith %}
+{% endblock form_footer %}

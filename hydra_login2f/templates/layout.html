@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+      {% autoescape false %}
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="initial-scale=1.0">
+        <link rel="stylesheet" href="{{config['STYLE_URL'] or url_for('.static', filename='style.css', version=config.VERSION)}}">
+        <title>{% block title %}{{config['SITE_TITLE']}}{% endblock %}</title>
+      {% endautoescape %}
+    {% endblock head %}
+  </head>
+  <body>
+    <header>
+      {% autoescape false %}
+        {% with locale_code = get_locale()|string, language_choices=config['LANGUAGE_CHOICES'] %}
+          <nav>
+            <ul class="languages">
+              <li><a href="{{config.ABOUT_URL}}">{% trans %}About{% endtrans %}</a></li>
+              {% for code, language in language_choices %}
+                {% if code != locale_code %}
+                  <li><a href="{{url_for('.set_language', lang=code, to=request.url)}}">{{language}}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endwith %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for message in messages %}
+                <li>{{message}}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      {% endautoescape %}
+    </header>
+    <main>{% block content %}{% endblock content %}</main>
+    <footer>{% block footer %}{% endblock footer %}</footer>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "form.html" %}
+
+{% block form_header %}
+  {% trans %}Email Verification{% endtrans %}
+{% endblock form_header %}
+
+{% block form_body %}
+  <form action="" method="POST" id="enter-verification-code-form">
+    <p class="form-comment">
+      {% trans %}
+        An email has been sent to you. Please check your inbox,
+        and enter the verification code provided there.
+      {% endtrans %}
+    </p>
+    <p>
+      <label for="verification_code">{% trans %}Verification code{% endtrans %}</label>
+      <input id="verification_code"
+             name="verification_code"
+             type="text"
+             value="{{request.form.get('verification_code', '')}}"
+             placeholder="{% trans %}Enter the verification code{% endtrans %}"
+             maxlength="254"
+             required
+             >
+    </p>
+    <p>
+      <input type="submit" value="{% trans %}Log in{% endtrans %}">
+    </p>
+  </form>
+{% endblock form_body %}
+
+{% block form_footer %}
+  {% if config.USE_RECOVERY_CODE %}
+    <ul class="login-footer-links">
+      <li><a href="{{url_for('.choose_new_email', secret=secret)|safe}}">{% trans %}Lost access to your email?{% endtrans %}</a></li>
+    </ul>
+  {% endif %}
+{% endblock form_footer %}

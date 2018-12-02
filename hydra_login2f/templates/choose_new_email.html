@@ -1,0 +1,37 @@
+{% extends "form.html" %}
+
+{% block form_header %}
+  {% trans %}Change Email Address{% endtrans %}
+{% endblock form_header %}
+
+{% block form_body %}
+  <form action="" method="POST" id="choose-new-email-form">
+    {% if require_recovery_code %}
+      <p class="recovery-code-field">
+        <label for="recovery_code">{% trans %}Recovery code{% endtrans %}</label>
+        <input id="recovery_code"
+               name="recovery_code"
+               type="text"
+               value="{{request.form.get('recovery_code', '')}}"
+               placeholder="{% trans %}Enter your recovery code{% endtrans %}"
+               maxlength="254"
+               required
+               >
+      </p>
+    {% endif %}
+    <p>
+      <label for="email">{% trans %}New email{% endtrans %}</label>
+      <input id="email"
+             name="email"
+             type="email"
+             value="{{request.form.get('email', '')}}"
+             placeholder="{% trans %}Enter your new email{% endtrans %}"
+             maxlength="254"
+             required
+             >
+    </p>
+    <p>
+      <input type="submit" value="{% trans %}Submit{% endtrans %}">
+    </p>
+  </form>
+{% endblock form_body %}

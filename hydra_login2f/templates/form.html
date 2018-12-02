@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="primary-form">
+    <h1>{% block form_header %}{% endblock form_header %}</h1>
+    <div class="primary-form-body">
+      {% block form_body %}{% endblock form_body %}
+    </div>
+    <div class="primary-form-footer">
+      {% block form_footer %}{% endblock form_footer %}
+    </div>
+  </div>
+{% endblock content %}

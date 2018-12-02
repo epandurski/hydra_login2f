@@ -1,0 +1,4 @@
+-- 
+{% trans site=config.SITE_TITLE -%}
+The {{site}} Team
+{% endtrans %}

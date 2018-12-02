@@ -1,0 +1,12 @@
+{% trans site=config.SITE_TITLE -%}
+A request has been made to change your account email address.
+
+If you do not remember trying to change your account email address on
+{{site}} recently, chances are that someone else knows your password
+and tries to hijack your account. If you suspect that this is the case,
+you should immediately change your account password by clicking on the
+following link:
+
+{{change_password_page}}
+{% endtrans %}
+{% include '_email_signature.txt' %}

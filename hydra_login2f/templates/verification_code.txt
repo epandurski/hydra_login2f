@@ -1,0 +1,13 @@
+{% trans site=config.SITE_TITLE, num=config.LOGIN_VERIFICATION_CODE_EXPIRATION_SECONDS // 60 -%}
+The login verification code is: {{verification_code}}
+
+This verification code will expire in {{num}} minutes.
+
+If you do not remember being asked recently to enter a login verification
+code on {{site}}, chances are that someone else knows your password
+and tries to log in as you. If you suspect that this is the case, you should
+immediately change your account password by clicking on the following link:
+
+{{change_password_page}}
+{% endtrans %}
+{% include '_email_signature.txt' %}

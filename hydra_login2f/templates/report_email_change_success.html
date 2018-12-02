@@ -1,0 +1,11 @@
+{% extends "message.html" %}
+
+{% block message %}
+  <p class="success-message-icon"></p>
+  <p>
+    {% trans old_email='<em class="email">{}</em>'.format(old_email)|safe, new_email='<em class="email">{}</em>'.format(new_email)|safe %}
+      The email address on your account has been successfully changed
+      from {{old_email}} to {{new_email}}.
+    {% endtrans %}
+  </p>
+{% endblock message %}

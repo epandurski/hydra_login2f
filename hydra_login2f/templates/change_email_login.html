@@ -1,0 +1,33 @@
+{% extends "form.html" %}
+
+{% block form_header %}
+  {% trans %}Change Email Address{% endtrans %}
+{% endblock form_header %}
+
+{% block form_body %}
+  <form action="" method="POST" id="change-email-login-form">
+    <p>
+      <label for="email">{% trans %}Old email{% endtrans %}</label>
+      <input id="email"
+             name="email"
+             type="email"
+             value="{{request.form.get('email', '')}}"
+             placeholder="{% trans %}Enter your old email{% endtrans %}"
+             maxlength="254"
+             required
+             >
+    </p>
+    <p>
+      <label for="password">{% trans %}Password{% endtrans %}</label>
+      <input id="password"
+             name="password"
+             type="password"
+             placeholder="{% trans %}Enter your password{% endtrans %}"
+             required
+             >
+    </p>
+    <p>
+      <input type="submit" value="{% trans %}Log in{% endtrans %}">
+    </p>
+  </form>
+{% endblock form_body %}

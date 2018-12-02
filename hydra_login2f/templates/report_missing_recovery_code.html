@@ -1,0 +1,11 @@
+{% extends "message.html" %}
+
+{% block message %}
+  <p class="failure-message-icon"></p>
+  <p>
+    {% trans %}
+      You can not change your account email address, because you do
+      not have a recovery code.
+    {% endtrans %}
+  </p>
+{% endblock message %}

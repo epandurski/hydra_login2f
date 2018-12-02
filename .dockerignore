@@ -1,0 +1,26 @@
+README.md
+.gitignore
+.dockerignore
+
+# Distribution / packaging
+*.egg-info/
+build/
+dist/
+sdist/
+wheels/
+MANIFEST
+
+# Byte-compiled files
+**/__pycache__/
+**/*.py[cod]
+
+# Translation-related
+*/babel.cfg
+*/translations/**/*.mo
+*/*.pot
+
+# Emacs files
+**/*~
+**/TAGS
+**/.projectile
+**/.dir-locals.el

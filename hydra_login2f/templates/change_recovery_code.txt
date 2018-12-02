@@ -1,0 +1,11 @@
+{% trans site=config.SITE_TITLE, num=config.CHANGE_RECOVERY_CODE_REQUEST_EXPIRATION_SECONDS // 60 -%}
+Proceed with changing your recovery code by clicking on the following link:
+
+{{change_recovery_code_link}}
+
+This link will expire in {{num}} minutes.
+
+If you received this email by mistake, simply delete it. Your recovery code
+won't be changed if you don't click the link above.
+{% endtrans %}
+{% include '_email_signature.txt' %}

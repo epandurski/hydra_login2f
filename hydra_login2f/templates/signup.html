@@ -1,0 +1,27 @@
+{% extends "form.html" %}
+
+{% block form_header %}{{title|safe}}{% endblock form_header %}
+
+{% block form_body %}
+  <form action="" method="POST" id="signup-form">
+    <p>
+      <label for="email">{% trans %}Email{% endtrans %}</label>
+      <input id="email"
+             name="email"
+             type="email"
+             value="{{email}}"
+             placeholder="{% trans %}Enter your email{% endtrans %}"
+             maxlength="254"
+             required
+             >
+    </p>
+    {% if config.SHOW_CAPTCHA_ON_SIGNUP %}
+      <p>
+        {{display_captcha(get_locale()|string)|safe}}
+      </p>
+    {% endif %}
+    <p>
+      <input type="submit" value="{% trans %}Send me a secret link{% endtrans %}">
+    </p>
+  </form>
+{% endblock form_body %}

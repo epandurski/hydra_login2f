@@ -1,0 +1,10 @@
+{% extends "message.html" %}
+
+{% block message %}
+  <p>
+    {% trans %}
+      Your account recovery code has been changed. Your new recovery code is:
+    {% endtrans %}
+  </p>
+  {% include '_recovery_code.html' %}
+{% endblock message %}

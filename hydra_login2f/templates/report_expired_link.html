@@ -1,0 +1,11 @@
+{% extends "message.html" %}
+
+{% block message %}
+  <p class="failure-message-icon"></p>
+  <p>
+    {% trans %}
+      There is nothing here. You either don't have permission to
+      access this page or the link has expired.
+    {% endtrans %}
+  </p>
+{% endblock message %}
