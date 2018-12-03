@@ -1,0 +1,18 @@
+{
+  "client_id": "consumer-app",
+  "description": "This client will be used by the exemplary consumer application.",
+  "client_secret": "consumer-secret",
+  "scope": "openid offline articles.read",
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code",
+    "d_token"
+  ],
+  "token_endpoint_auth_method": "client_secret_post",
+  "redirect_uris": [
+    "http://localhost:4488/users/hello_world"
+  ]
+}

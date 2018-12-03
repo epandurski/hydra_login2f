@@ -1,0 +1,130 @@
+version: '3.6'
+
+services:
+
+  pg:
+    image: postgres:10.5
+    volumes:
+      - pg-data-volume:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    ports:
+      # This may be useful during development to access the database directly.
+      - 5433:5432
+
+
+  redis:
+    image: redis
+    ports:
+      # This may be useful during development to access the DB.
+      - 6379:6379
+
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      # This may be useful during development to send and read emails.
+      - 1025:1025
+      - 8025:8025
+
+
+  hydra-migrate:
+    image: oryd/hydra:$HYDRA_VERSION
+    environment:
+      - LOG_LEVEL=debug
+      - HYDRA_SYSTEM_SECRET=$HYDRA_SYSTEM_SECRET
+    command:
+      migrate sql postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
+    depends_on:
+      - pg
+    restart: on-failure
+
+
+  hydra:
+    image: oryd/hydra:$HYDRA_VERSION
+    ports:
+      # This is the public Oauth2 endpoint.
+      - 4444:4444
+      # This may be useful during development to access the admin API.
+      - 4445:4445
+    depends_on:
+      - hydra-migrate
+    command:
+      serve all --dangerous-force-http
+    environment:
+      - LOG_LEVEL=debug
+      - DISABLE_TELEMETRY=1
+      - SYSTEM_SECRET=$HYDRA_SYSTEM_SECRET
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
+      - OAUTH2_CONSENT_URL=http://$BROWSER_IDP_HOST:4488/consent
+      - OAUTH2_LOGIN_URL=http://$BROWSER_IDP_HOST:4488/login
+      - OAUTH2_ISSUER_URL=http://$BROWSER_HYDRA_HOST:4444
+      - OAUTH2_SHARE_ERROR_DEBUG=1
+      - HYDRA_ADMIN_URL=http://hydra:4445
+    depends_on:
+      - hydra-migrate
+    restart: on-failure
+
+
+  hydra-config:
+    image: oryd/hydra:$HYDRA_VERSION
+    environment:
+      - LOG_LEVEL=debug
+      - SYSTEM_SECRET=$HYDRA_SYSTEM_SECRET
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
+      - HYDRA_ADMIN_URL=http://hydra:4445
+    volumes:
+      - '.:/etc/hydra-config'
+    command:
+      clients import /etc/hydra-config/consumer-app.json
+    depends_on:
+      - hydra
+    restart: on-failure
+
+
+  hydra-login2f-migrate:
+    build:
+      context: ../
+      dockerfile: docker_flask/Dockerfile
+      args:
+        - FLASK_APP=hydra_login2f
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}
+    command: db upgrade
+    depends_on:
+      - pg
+    restart: on-failure
+
+
+  hydra-login2f:
+    build:
+      context: ../
+      dockerfile: docker_flask/Dockerfile
+      args:
+        - FLASK_APP=hydra_login2f
+    ports:
+      # This is the public endpoint for login and consent pages.
+      - 4488:4488
+    environment:
+      - PORT=4488
+      - SQLALCHEMY_DATABASE_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+      - MAIL_SERVER=mail
+      - MAIL_PORT=1025
+      - MAIL_DEFAULT_SENDER=Login Test Site <no-reply@hydra-login2f.com>
+      - HYDRA_ADMIN_URL=http://hydra:4445
+      - LANGUAGES=en,bg
+    command: develop
+    depends_on:
+      - pg
+      - redis
+      - mail
+      - hydra
+      - hydra-config
+      - hydra-login2f-migrate
+
+
+volumes:
+  pg-data-volume:

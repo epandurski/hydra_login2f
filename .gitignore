@@ -107,3 +107,6 @@ TAGS
 *~
 .projectile
 .dir-locals.el
+
+# hydra_login2f specifics
+!example/.env

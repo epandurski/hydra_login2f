@@ -1,6 +1,7 @@
 README.md
 .gitignore
 .dockerignore
+example/
 
 # Distribution / packaging
 *.egg-info/
