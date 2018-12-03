@@ -34,7 +34,6 @@ services:
     image: oryd/hydra:$HYDRA_VERSION
     environment:
       - LOG_LEVEL=debug
-      - HYDRA_SYSTEM_SECRET=$HYDRA_SYSTEM_SECRET
     command:
       migrate sql postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
     depends_on:
@@ -49,8 +48,6 @@ services:
       - 4444:4444
       # This may be useful during development to access the admin API.
       - 4445:4445
-    depends_on:
-      - hydra-migrate
     command:
       serve all --dangerous-force-http
     environment:
@@ -72,8 +69,6 @@ services:
     image: oryd/hydra:$HYDRA_VERSION
     environment:
       - LOG_LEVEL=debug
-      - SYSTEM_SECRET=$HYDRA_SYSTEM_SECRET
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
       - HYDRA_ADMIN_URL=http://hydra:4445
     volumes:
       - '.:/etc/hydra-config'
