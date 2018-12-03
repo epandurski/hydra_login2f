@@ -11,9 +11,11 @@ directly from a docker image.
 You can find a working example in the `example/` directory.
 
 
-## Environment varialbles
+## Configuration
 
-Those are the most important *hydra_login2f* settings with their default values:
+*hydra_login2f*'s behavior can be controlled with environment
+variables. Here are the most important settings with their default
+values:
 
 ``` shell
 # The port on which `hydra_login2f` will run.
