@@ -48,7 +48,8 @@ HYDRA_ADMIN_URL = 'http://hydra:4445'
 # Set this to the URL for your Redis server instance.
 REDIS_URL = 'redis://localhost:6379/0'
 
-# Set this to the URL for your PostgreSQL server instance.
+# Set this to the URL for your SQL database server instance. PostgreSQL
+# and MySQL are supported out of the box.
 SQLALCHEMY_DATABASE_URI = ''
 
 # SMTP server connection parameters. You should set `MAIL_DEFAULT_SENDER`

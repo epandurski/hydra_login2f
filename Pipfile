@@ -18,6 +18,7 @@ user-agents = "*"
 "psycopg2-binary" = "*"
 flask-redis = "*"
 flask-signalbus = "*"
+mysql-connector = "*"
 
 [requires]
 python_version = "3.5"
