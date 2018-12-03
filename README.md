@@ -2,13 +2,13 @@
 
 **hydra_login2f** is a secure login provider for [ORY Hydra Auth2
 Server](https://github.com/ory/hydra). *hydra_login2f* implements
-two-factor authentication via email, and can be deployed directly from
-a docker image.
+two-factor authentication via email.
 
 
 ## Installation
 
-You can find a working example in the `example/` directory.
+*hydra_login2f* can be deployed directly from a docker image. You can
+find a working example in the `example/` directory.
 
 
 ## Configuration
