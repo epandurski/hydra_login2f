@@ -37,21 +37,21 @@ ABOUT_URL = 'https://github.com/epandurski/hydra_login2f'
 # Optional URL for a custom CSS style-sheet:
 STYLE_URL = ''
 
-# Whether to give users recovery codes for additional security.
+# Whether to give users recovery codes for additional security:
 USE_RECOVERY_CODE = True
 
-# Set this to the URL for ORY Hydra's admin API:
+# Set this to the URL for ORY Hydra's admin API.
 HYDRA_ADMIN_URL = 'http://hydra:4445'
 
-# Set this to the URL for your Redis server instance:
+# Set this to the URL for your Redis server instance.
 REDIS_URL = 'redis://localhost:6379/0'
 
-# Set this to the URL for your PostgreSQL server instance:
+# Set this to the URL for your PostgreSQL server instance.
 SQLALCHEMY_DATABASE_URI = ''
 
 # SMTP server connection parameters. You should set `MAIL_DEFAULT_SENDER`
 # to the email address from which you send your outgoing emails to users,
-# "My Site Name <no-reply@my-site.com>" for example:
+# "My Site Name <no-reply@my-site.com>" for example.
 MAIL_SERVER = 'localhost'
 MAIL_PORT = 25
 MAIL_USE_TLS = False
@@ -61,7 +61,7 @@ MAIL_PASSWORD = None
 MAIL_DEFAULT_SENDER = None
 
 # Parameters for Google reCAPTCHA 2. You should obtain your own public/private
-# key pair from www.google.com/recaptcha, and put it here:
+# key pair from www.google.com/recaptcha, and put it here.
 RECAPTCHA_PUBLIC_KEY = '6Lc902MUAAAAAJL22lcbpY3fvg3j4LSERDDQYe37'
 RECAPTCHA_PIVATE_KEY = '6Lc902MUAAAAAN--r4vUr8Vr7MU1PF16D9k2Ds9Q'
 ```
