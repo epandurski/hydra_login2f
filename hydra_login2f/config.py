@@ -16,6 +16,7 @@ def _get_default_password_min_length(fallback):
 
 class Configuration(metaclass=MetaFlaskEnv):
     VERSION = '0.98.1'
+
     PORT = 8000
     SECRET_KEY = 'dummy-secret'
     SITE_TITLE = 'Login Test Site'
