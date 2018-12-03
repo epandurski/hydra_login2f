@@ -1,6 +1,6 @@
 # hydra_login2f
 
-**hydra_login2f** is a secure login provider for [ORY Hydra Auth2
+*hydra_login2f* is a secure login provider for [ORY Hydra Auth2
 Server](https://github.com/ory/hydra). *hydra_login2f* implements
 two-factor authentication via email.
 
