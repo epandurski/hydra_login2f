@@ -83,8 +83,6 @@ services:
     build:
       context: ../
       dockerfile: docker_flask/Dockerfile
-      args:
-        - FLASK_APP=hydra_login2f
     environment:
       - SQLALCHEMY_DATABASE_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}
     command: db upgrade
@@ -97,8 +95,6 @@ services:
     build:
       context: ../
       dockerfile: docker_flask/Dockerfile
-      args:
-        - FLASK_APP=hydra_login2f
     ports:
       # This is the public endpoint for login and consent pages.
       - 4488:4488

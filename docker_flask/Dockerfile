@@ -1,6 +1,6 @@
 FROM python:3.5.3-alpine
 WORKDIR /usr/src/app
-ARG FLASK_APP
+ARG FLASK_APP=hydra_login2f
 
 RUN apk add --no-cache \
     gcc \
