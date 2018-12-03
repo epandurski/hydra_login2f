@@ -11,9 +11,12 @@ directly from a docker image.
 You can find a working example in the `example/` directory.
 
 
-## Configuration varialble
+## Environment varialbles
+
+Those are the most important *hydra_login2f* settings with their default values:
 
 ``` shell
+# The port on which `hydra_login2f` will run:
 PORT = 8000
 
 SECRET_KEY = 'dummy-secret'  # must be set to a random, long string
@@ -25,13 +28,16 @@ STYLE_URL = ''  # optional custom CSS style-sheet
 LOGIN_PATH = '/login'  # the path to your login page (ORY Hydra's OAUTH2_LOGIN_URL)
 CONSENT_PATH = '/consent'  # the path to your consent page (ORY Hydra's OAUTH2_CONSENT_URL)
 
-HYDRA_ADMIN_URL = 'http://hydra:4445'  # the URL for ORY Hydra's admin API
+# The URL for ORY Hydra's admin API:
+HYDRA_ADMIN_URL = 'http://hydra:4445'
 
-REDIS_URL = 'redis://localhost:6379/0'  # the URL for your Redis server instance
+# The URL for your Redis server instance:
+REDIS_URL = 'redis://localhost:6379/0'
 
-SQLALCHEMY_DATABASE_URI = ''  # the URL for your PostgreSQL server instance
+# The URL for your PostgreSQL server instance:
+SQLALCHEMY_DATABASE_URI = ''
 
-# SMTP server connection parameters
+# SMTP server connection parameters:
 MAIL_SERVER = 'localhost'
 MAIL_PORT = 25
 MAIL_USE_TLS = False
@@ -40,8 +46,8 @@ MAIL_USERNAME = None
 MAIL_PASSWORD = None
 MAIL_DEFAULT_SENDER = None  # for example "My Site Name <no-reply@my-site.com>"
 
-# Parameters for Google reCAPTCHA 2. You should obtain your own public/private key pair
-# from www.google.com/recaptcha, and put it here
+# Parameters for Google reCAPTCHA 2. You should obtain your own public/private
+# key pair from www.google.com/recaptcha, and put it here:
 RECAPTCHA_PUBLIC_KEY = '6Lc902MUAAAAAJL22lcbpY3fvg3j4LSERDDQYe37'
 RECAPTCHA_PIVATE_KEY = '6Lc902MUAAAAAN--r4vUr8Vr7MU1PF16D9k2Ds9Q'
 ```
