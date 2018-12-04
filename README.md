@@ -43,10 +43,10 @@ ABOUT_URL = 'https://github.com/epandurski/hydra_login2f'
 # Optional URL for a custom CSS style-sheet:
 STYLE_URL = ''
 
-# Whether to issue recovery codes to your users for additional security.
-# It is probably a good idea to use recovery codes if the account to
-# your service might be more important to your users than their email
-# account.
+# Whether to issue recovery codes to your users for additional security
+# ('True' or 'False'). It is probably a good idea to use recovery codes
+# if the account to your service might be more important to your users
+# than their email account.
 USE_RECOVERY_CODE = True
 
 # Set this to the URL for ORY Hydra's admin API.
