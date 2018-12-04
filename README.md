@@ -25,7 +25,10 @@ PORT = 8000
 # The path to the login page (ORY Hydra's `OAUTH2_LOGIN_URL`):
 LOGIN_PATH = '/login'
 
-# The path to the consent page (ORY Hydra's `OAUTH2_CONSENT_URL`):
+# The path to the dummy consent page (ORY Hydra's `OAUTH2_CONSENT_URL`).
+# `hydra_login2f` implements a dummy consent page, which accepts all
+# consent requests unconditionally without showing any UI to the user.
+# This is sometimes useful, especially during testing.
 CONSENT_PATH = '/consent'
 
 # Set this to a random, long string, and keep it secret.
@@ -71,9 +74,9 @@ RECAPTCHA_PIVATE_KEY = '6Lc902MUAAAAAN--r4vUr8Vr7MU1PF16D9k2Ds9Q'
 
 # Set this to the number of worker processes for handling requests -- a
 # positive integer generally in the 2-4 * $NUM_CORES range.
-ENV GUNICORN_WORKERS=2
+GUNICORN_WORKERS=2
 
 # Set this to the number of worker threads for handling requests. (Runs
 # each worker with the specified number of threads.)
-ENV GUNICORN_THREADS=1
+GUNICORN_THREADS=1
 ```
