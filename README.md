@@ -67,4 +67,12 @@ MAIL_DEFAULT_SENDER = None
 # key pair from www.google.com/recaptcha, and put it here.
 RECAPTCHA_PUBLIC_KEY = '6Lc902MUAAAAAJL22lcbpY3fvg3j4LSERDDQYe37'
 RECAPTCHA_PIVATE_KEY = '6Lc902MUAAAAAN--r4vUr8Vr7MU1PF16D9k2Ds9Q'
+
+# Set this to the number of worker processes for handling requests -- a
+# positive integer generally in the 2-4 * $NUM_CORES range.
+ENV GUNICORN_WORKERS=2
+
+# Set this to the number of worker threads for handling requests. (Runs
+# each worker with the specified number of threads.)
+ENV GUNICORN_THREADS=1
 ```

@@ -106,7 +106,6 @@ services:
       - MAIL_PORT=1025
       - MAIL_DEFAULT_SENDER=Login Test Site <no-reply@hydra-login2f.com>
       - HYDRA_ADMIN_URL=http://hydra:4445
-    command: develop
     depends_on:
       - pg
       - redis
