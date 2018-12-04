@@ -20,60 +20,60 @@ values:
 
 ``` shell
 # The port on which `hydra_login2f` will run.
-PORT = 8000
+PORT=8000
 
 # The path to the login page (ORY Hydra's `OAUTH2_LOGIN_URL`):
-LOGIN_PATH = '/login'
+LOGIN_PATH='/login'
 
 # The path to the dummy consent page (ORY Hydra's `OAUTH2_CONSENT_URL`).
 # `hydra_login2f` implements a dummy consent page, which accepts all
 # consent requests unconditionally, without showing any UI to the user.
 # This is sometimes useful, especially during testing.
-CONSENT_PATH = '/consent'
+CONSENT_PATH='/consent'
 
 # Set this to a random, long string, and keep it secret.
-SECRET_KEY = 'dummy-secret'
+SECRET_KEY='dummy-secret'
 
 # Set this to the name of your site, as it is known to your users.
-SITE_TITLE = 'My site name'
+SITE_TITLE='My site name'
 
 # Set this to an URL that tells more about your site.
-ABOUT_URL = 'https://github.com/epandurski/hydra_login2f'
+ABOUT_URL='https://github.com/epandurski/hydra_login2f'
 
 # Optional URL for a custom CSS style-sheet:
-STYLE_URL = ''
+STYLE_URL=''
 
 # Whether to issue recovery codes to your users for additional security
 # ('True' or 'False'). It is probably a good idea to use recovery codes
 # if the account to your service might be more important to your users
 # than their email account.
-USE_RECOVERY_CODE = True
+USE_RECOVERY_CODE=True
 
 # Set this to the URL for ORY Hydra's admin API.
-HYDRA_ADMIN_URL = 'http://hydra:4445'
+HYDRA_ADMIN_URL='http://hydra:4445'
 
 # Set this to the URL for your Redis server instance.
-REDIS_URL = 'redis://localhost:6379/0'
+REDIS_URL='redis://localhost:6379/0'
 
 # Set this to the URL for your SQL database server instance. PostgreSQL
 # and MySQL are supported out of the box.
-SQLALCHEMY_DATABASE_URI = ''
+SQLALCHEMY_DATABASE_URI=''
 
 # SMTP server connection parameters. You should set `MAIL_DEFAULT_SENDER`
 # to the email address from which you send your outgoing emails to users,
 # "My Site Name <no-reply@my-site.com>" for example.
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
-MAIL_USE_TLS = False
-MAIL_USE_SSL = False
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
-MAIL_DEFAULT_SENDER = None
+MAIL_SERVER='localhost'
+MAIL_PORT=25
+MAIL_USE_TLS=False
+MAIL_USE_SSL=False
+MAIL_USERNAME=None
+MAIL_PASSWORD=None
+MAIL_DEFAULT_SENDER=None
 
 # Parameters for Google reCAPTCHA 2. You should obtain your own public/private
 # key pair from www.google.com/recaptcha, and put it here.
-RECAPTCHA_PUBLIC_KEY = '6Lc902MUAAAAAJL22lcbpY3fvg3j4LSERDDQYe37'
-RECAPTCHA_PIVATE_KEY = '6Lc902MUAAAAAN--r4vUr8Vr7MU1PF16D9k2Ds9Q'
+RECAPTCHA_PUBLIC_KEY='6Lc902MUAAAAAJL22lcbpY3fvg3j4LSERDDQYe37'
+RECAPTCHA_PIVATE_KEY='6Lc902MUAAAAAN--r4vUr8Vr7MU1PF16D9k2Ds9Q'
 
 # Set this to the number of worker processes for handling requests -- a
 # positive integer generally in the 2-4 * $NUM_CORES range.
