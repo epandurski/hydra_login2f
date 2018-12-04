@@ -27,7 +27,7 @@ LOGIN_PATH = '/login'
 
 # The path to the dummy consent page (ORY Hydra's `OAUTH2_CONSENT_URL`).
 # `hydra_login2f` implements a dummy consent page, which accepts all
-# consent requests unconditionally without showing any UI to the user.
+# consent requests unconditionally, without showing any UI to the user.
 # This is sometimes useful, especially during testing.
 CONSENT_PATH = '/consent'
 
