@@ -13,7 +13,7 @@ find a working example in the `example/` directory.
 
 ## Configuration
 
-*hydra_login2f*'s behavior can be controlled with environment
+*hydra_login2f*'s behavior can be tuned with environment
 variables. Here are the most important settings with their default
 values:
 
