@@ -13,6 +13,6 @@
   ],
   "token_endpoint_auth_method": "client_secret_post",
   "redirect_uris": [
-    "http://localhost:4488/users/hello_world"
+    "http://localhost:4488/login/success"
   ]
 }
