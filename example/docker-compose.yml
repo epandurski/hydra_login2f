@@ -107,9 +107,10 @@ services:
       - MAIL_DEFAULT_SENDER=Login Test Site <no-reply@hydra-login2f.com>
       - HYDRA_ADMIN_URL=http://hydra:4445
     command:
-      ##########################################################################################
-      # Change "develop" to "serve" in production, or remove the "command" setting altogether! #
-      ##########################################################################################
+      ##############################################################################
+      # Change "develop" to "serve" in production, or remove the "command" setting #
+      # altogether. Also, make sure that you always use SSL/TLS in production.     #
+      ##############################################################################
       develop
     depends_on:
       - pg
