@@ -2,10 +2,16 @@ Changelog
 =========
 
 
+Version 0.9.2
+-----------
+
+- Added `SUBJECT_PREFIX` parameter
+
+
 Version 0.9.1
 -----------
 
-- Fix bug in MySQL support
+- Fixed bug in MySQL support
 
 
 
