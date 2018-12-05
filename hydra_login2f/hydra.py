@@ -5,7 +5,7 @@ from .redis import increment_key_with_limit, UserLoginsHistory, ExceededValueLim
 
 
 def get_subject(user_id):
-    return str(user_id)
+    return current_app.config['SUBJECT_PREFIX'] + str(user_id)
 
 
 def invalidate_credentials(user_id):
