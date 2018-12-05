@@ -22,6 +22,7 @@ class Configuration(metaclass=MetaFlaskEnv):
     SITE_TITLE = 'Login Test Site'
     LANGUAGES = 'en'  # separated by a comma, for example 'en,bg'
     USE_RECOVERY_CODE = True
+    SUBJECT_PREFIX = ''
     ABOUT_URL = 'https://github.com/epandurski/hydra_login2f'
     STYLE_URL = ''
     LOGIN_PATH = '/login'

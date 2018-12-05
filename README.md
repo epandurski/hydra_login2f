@@ -1,6 +1,6 @@
 # hydra_login2f
 
-*hydra_login2f* is a secure login provider for [ORY Hydra Auth2
+*hydra_login2f* is a secure login provider for [ORY Hydra OAuth2
 Server](https://github.com/ory/hydra). *hydra_login2f* implements
 two-factor authentication via email.
 
@@ -30,6 +30,11 @@ LOGIN_PATH='/login'
 # consent requests unconditionally, without showing any UI to the user.
 # This is sometimes useful, especially during testing.
 CONSENT_PATH='/consent'
+
+# The prefix added the user ID to form the Oauth2 subject field. For
+# example, if SUBJECT_PREFIX='user:', the OAuth2 subject for the user
+# with ID=1234 would be 'user:1234'.
+SUBJECT_PREFIX=''
 
 # Set this to a random, long string, and keep it secret.
 SECRET_KEY='dummy-secret'
