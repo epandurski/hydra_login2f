@@ -182,9 +182,9 @@ def choose_password(secret):
             flash(gettext('Incorrect recovery code'))
         else:
             new_recovery_code = signup_request.accept(password)
-            UserLoginsHistory(signup_request.user_id).add(signup_request.cc)
             if is_password_recovery:
                 hydra.invalidate_credentials(signup_request.user_id)
+                UserLoginsHistory(signup_request.user_id).add(signup_request.cc)
                 emails.send_change_password_success_email(
                     signup_request.email,
                     get_change_password_link(signup_request.email),
@@ -194,6 +194,7 @@ def choose_password(secret):
                     email=signup_request.email,
                 )
             else:
+                UserLoginsHistory(signup_request.user_id).add(signup_request.cc)
                 response = make_response(render_template(
                     'report_signup_success.html',
                     email=signup_request.email,
