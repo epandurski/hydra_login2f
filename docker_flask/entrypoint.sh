@@ -5,6 +5,7 @@ logging_conf='/usr/src/app/docker_flask/logging.conf'
 gunicorn_conf='/usr/src/app/docker_flask/gunicorn.conf'
 
 export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=/usr/src/app
 case $1 in
     develop)
         shift;
@@ -30,6 +31,9 @@ case $1 in
     signalbus)
         shift;
         exec flask signalbus "$@"
+        ;;
+    supervisord)
+        exec supervisord -c /usr/src/app/docker_flask/supervisord.conf
         ;;
     *)
         exec "$@"

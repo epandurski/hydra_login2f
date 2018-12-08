@@ -1,4 +1,4 @@
-FROM python:3.5.3-alpine
+FROM python:3.7-alpine
 WORKDIR /usr/src/app
 ARG FLASK_APP=hydra_login2f
 
@@ -8,6 +8,7 @@ RUN apk add --no-cache \
     python3-dev \
     postgresql-dev \
     git \
+    supervisor \
   && pip install --upgrade pip \
   && pip install pipenv gunicorn json-logging-py pudb
 
