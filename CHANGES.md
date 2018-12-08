@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+Version 0.9.3
+-----------
+
+- Do not require verification code after password change
+- Use python:3.7-alpine for the docker image
+
+
 Version 0.9.2
 -----------
 
