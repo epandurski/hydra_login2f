@@ -29,9 +29,6 @@ RUN python -c 'from wsgi import app'
 # Ensure flask is not bugged by an .env file.
 RUN rm -f .env
 
-# Configure alembic to use JSON logging.
-RUN docker_flask/set_json_log_handler.py migrations/alembic.ini
-
 # Compile translation (.po) files if necessary.
 RUN ! which pybabel || pybabel compile -d $FLASK_APP/translations
 

@@ -6,7 +6,8 @@ Version 0.9.4
 -----------
 
 - Added database connection pooling configuration settings
-- Improved the default logging configuration
+- Improved default logging configuration
+- Improved Dockerfile
 
 
 Version 0.9.3

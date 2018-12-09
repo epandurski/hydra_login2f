@@ -1,6 +1,8 @@
 README.md
 .gitignore
 .dockerignore
+.env
+.git/
 example/
 
 # Distribution / packaging
