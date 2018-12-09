@@ -21,7 +21,10 @@ COPY Pipfile ./
 COPY Pipfile.lock ./
 RUN pipenv install --deploy --system
 COPY . .
+
+# Compile the app, check if it can be imported.
 RUN python -m compileall .
+RUN python -c 'from wsgi import app'
 
 # Ensure flask is not bugged by an .env file.
 RUN rm -f .env
