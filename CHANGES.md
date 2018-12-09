@@ -5,7 +5,8 @@ Changelog
 Version 0.9.4
 -----------
 
-- Add database connection pooling configuration settings
+- Added database connection pooling configuration settings
+- Improved the default logging configuration
 
 
 Version 0.9.3
