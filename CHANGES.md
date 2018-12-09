@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+Version 0.9.4
+-----------
+
+- Add database connection pooling configuration settings
+
+
 Version 0.9.3
 -----------
 

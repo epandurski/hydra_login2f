@@ -66,6 +66,25 @@ REDIS_URL='redis://localhost:6379/0'
 # - mysql+mysqlconnector://user:pass@servername/dbname
 SQLALCHEMY_DATABASE_URI=''
 
+# The size of the database connection pool. If not set, defaults to the
+# engine’s default (usually 5).
+SQLALCHEMY_POOL_SIZE=None
+
+# Controls the number of connections that can be created after the pool
+# reached its maximum size (`SQLALCHEMY_POOL_SIZE`). When those additional
+# connections are returned to the pool, they are disconnected and discarded.
+SQLALCHEMY_MAX_OVERFLOW=None
+
+# Specifies the connection timeout in seconds for the pool.
+SQLALCHEMY_POOL_TIMEOUT=None
+
+# The number of seconds after which a connection is automatically recycled.
+# This is required for MySQL, which removes connections after 8 hours idle
+# by default. It will be automatically set to 2 hours if MySQL is used.
+# Some backends may use a different default timeout value (MariaDB, for
+# example).
+SQLALCHEMY_POOL_RECYCLE=None
+
 # SMTP server connection parameters. You should set `MAIL_DEFAULT_SENDER`
 # to the email address from which you send your outgoing emails to users,
 # "My Site Name <no-reply@my-site.com>" for example.

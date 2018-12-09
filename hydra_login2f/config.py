@@ -15,7 +15,7 @@ def _get_default_password_min_length(fallback):
 
 
 class Configuration(metaclass=MetaFlaskEnv):
-    VERSION = '0.9.3'
+    VERSION = '0.9.4'
 
     PORT = 8000
     SECRET_KEY = 'dummy-secret'
@@ -30,6 +30,10 @@ class Configuration(metaclass=MetaFlaskEnv):
     HYDRA_ADMIN_URL = 'http://hydra:4445'
     REDIS_URL = 'redis://localhost:6379/0'
     SQLALCHEMY_DATABASE_URI = ''
+    SQLALCHEMY_POOL_SIZE = None
+    SQLALCHEMY_POOL_TIMEOUT = None
+    SQLALCHEMY_POOL_RECYCLE = None
+    SQLALCHEMY_MAX_OVERFLOW = None
     MAIL_SERVER = 'localhost'
     MAIL_PORT = 25
     MAIL_USE_TLS = False
