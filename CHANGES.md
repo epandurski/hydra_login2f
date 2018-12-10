@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+Version 0.9.5
+-----------
+
+- Improved README
+
+
 Version 0.9.4
 -----------
 
