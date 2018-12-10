@@ -11,7 +11,7 @@ class User(db.Model):
 
 
 class UserUpdateSignal(db.Model):
-    user_update_signal_id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
+    user_update_signal_id = db.Column(db.BigInteger, primary_key=True)
     user_id = db.Column(db.BigInteger, db.ForeignKey('user.user_id'), nullable=False)
     email = db.Column(db.String(255), nullable=True)
 
