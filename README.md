@@ -57,7 +57,9 @@ USE_RECOVERY_CODE=True
 # Set this to the URL for ORY Hydra's admin API.
 HYDRA_ADMIN_URL='http://hydra:4445'
 
-# Set this to the URL for your Redis server instance.
+# Set this to the URL for your Redis server instance. It is highly
+# recommended that your Redis instance is backed by disk storage. If not so,
+# your users might be inconvenienced when your Redis instace is restarted.
 REDIS_URL='redis://localhost:6379/0'
 
 # Set this to the URL for your SQL database server instance. PostgreSQL
