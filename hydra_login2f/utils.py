@@ -4,6 +4,7 @@ import random
 import string
 import base64
 import struct
+import hashlib
 from crypt import crypt
 
 EMAIL_REGEX = re.compile(r'^[^@]+@[^@]+\.[^@]+$')
@@ -51,3 +52,9 @@ def generate_verification_code(num_digits=6):
 
 def calc_crypt_hash(salt, message):
     return crypt(message, salt)
+
+
+def calc_sha256(computer_code):
+    m = hashlib.sha256()
+    m.update(computer_code.encode())
+    return base64.urlsafe_b64encode(m.digest()).decode('ascii')

@@ -109,6 +109,7 @@ def signup():
             flash(captcha_error_message)
         else:
             computer_code = get_computer_code()
+            computer_code_hash = utils.calc_sha256(computer_code)
             user = User.query.filter_by(email=email).one_or_none()
             if user:
                 if is_new_user:
@@ -116,14 +117,14 @@ def signup():
                 else:
                     r = SignUpRequest.create(
                         email=email,
-                        cc=computer_code,
+                        cc=computer_code_hash,
                         recover='yes',
                         has_rc='yes' if user.recovery_code_hash else 'no',
                     )
                     emails.send_change_password_email(email, get_choose_password_link(r))
             else:
                 if is_new_user:
-                    r = SignUpRequest.create(email=email, cc=computer_code)
+                    r = SignUpRequest.create(email=email, cc=computer_code_hash)
                     emails.send_confirm_registration_email(email, get_choose_password_link(r))
                 else:
                     # We are asked to change the password of a non-existing user. In this case
@@ -393,9 +394,10 @@ def login_form():
             # "computer code" as well. The cookie proves that there
             # was a previous successful login attempt from this computer.
             computer_code = get_computer_code()
+            computer_code_hash = utils.calc_sha256(computer_code)
             user_logins_history = UserLoginsHistory(user_id)
-            if user_logins_history.contains(computer_code):
-                user_logins_history.add(computer_code)
+            if user_logins_history.contains(computer_code_hash):
+                user_logins_history.add(computer_code_hash)
                 return redirect(login_request.accept(subject, remember_me))
 
             # A two factor login verification code is required.
@@ -444,7 +446,8 @@ def enter_verification_code():
             subject = hydra.get_subject(user_id)
             remember_me = verification_request.remember_me == 'yes'
             verification_request.accept(clear_failures=True)
-            UserLoginsHistory(user_id).add(get_computer_code())
+            computer_code_hash = utils.calc_sha256(get_computer_code())
+            UserLoginsHistory(user_id).add(computer_code_hash)
             return redirect(login_request.accept(subject, remember_me))
         try:
             verification_request.register_code_failure()
