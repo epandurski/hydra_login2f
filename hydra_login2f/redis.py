@@ -62,9 +62,9 @@ class RedisSecretHashRecord:
         return self.REDIS_PREFIX + self.secret
 
     @classmethod
-    def create(cls, **data):
+    def create(cls, _secret=None, **data):
         instance = cls()
-        instance.secret = utils.generate_random_secret()
+        instance.secret = _secret or utils.generate_random_secret()
         instance._data = data
         with redis_store.pipeline() as p:
             p.hmset(instance.key, data)

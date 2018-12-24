@@ -5,6 +5,10 @@ Changelog
 Version 0.9.5
 -----------
 
+- Fixed a potential security issue caused by storing potentially
+  sensitive data in Redis. Now only cryptographic hashes are stored
+  instead of the data.
+
 - Improved README
 
 

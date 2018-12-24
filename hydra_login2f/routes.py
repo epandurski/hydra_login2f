@@ -402,8 +402,11 @@ def login_form():
 
             # A two factor login verification code is required.
             verification_code = utils.generate_verification_code()
+            verification_cookie = utils.generate_random_secret()
+            verification_cookie_hash = utils.calc_sha256(verification_cookie)
             try:
-                login_verification_request = LoginVerificationRequest.create(
+                LoginVerificationRequest.create(
+                    _secret=verification_cookie_hash,
                     user_id=user_id,
                     email=email,
                     code=verification_code,
@@ -421,7 +424,7 @@ def login_form():
             response = redirect(url_for('.enter_verification_code'))
             response.set_cookie(
                 current_app.config['LOGIN_VERIFICATION_COOKE_NAME'],
-                login_verification_request.secret,
+                verification_cookie,
                 httponly=True,
                 secure=not current_app.config['DEBUG'],
             )
@@ -434,8 +437,9 @@ def login_form():
 
 @login.route('/verify', methods=['GET', 'POST'])
 def enter_verification_code():
-    secret = request.cookies.get(current_app.config['LOGIN_VERIFICATION_COOKE_NAME'], '*')
-    verification_request = LoginVerificationRequest.from_secret(secret)
+    verification_cookie = request.cookies.get(current_app.config['LOGIN_VERIFICATION_COOKE_NAME'], '*')
+    verification_cookie_hash = utils.calc_sha256(verification_cookie)
+    verification_request = LoginVerificationRequest.from_secret(verification_cookie_hash)
     if not verification_request:
         abort(403)
 
@@ -455,7 +459,7 @@ def enter_verification_code():
             abort(403)
         flash(gettext('Invalid verification code'))
 
-    return render_template('enter_verification_code.html', secret=secret)
+    return render_template('enter_verification_code.html', secret=verification_cookie_hash)
 
 
 @consent.route('/', methods=['GET', 'POST'])
