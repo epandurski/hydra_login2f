@@ -34,6 +34,12 @@ def set_cache_control_header(response):
     return response
 
 
+@login.after_app_request
+def set_frame_options_header(response):
+    response.headers['X-Frame-Options'] = 'DENY'
+    return response
+
+
 @login.app_context_processor
 def inject_get_locale():
     return dict(get_locale=get_locale)
