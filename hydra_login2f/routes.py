@@ -16,7 +16,7 @@ consent = Blueprint('consent', __name__, template_folder='templates', static_fol
 @babel.localeselector
 def select_locale():
     language = request.cookies.get(current_app.config['LANGUAGE_COOKE_NAME'])
-    language_choices = [l[0] for l in current_app.config['LANGUAGE_CHOICES']]
+    language_choices = [choices[0] for choices in current_app.config['LANGUAGE_CHOICES']]
     if language in language_choices:
         return language
     return request.accept_languages.best_match(language_choices)
@@ -166,9 +166,9 @@ def choose_password(secret):
     if not signup_request:
         return render_template('report_expired_link.html')
     is_password_recovery = signup_request.recover == 'yes'
-    require_recovery_code = (is_password_recovery and
-                             signup_request.has_rc == 'yes' and
-                             current_app.config['USE_RECOVERY_CODE'])
+    require_recovery_code = (is_password_recovery
+                             and signup_request.has_rc == 'yes'
+                             and current_app.config['USE_RECOVERY_CODE'])
 
     if request.method == 'POST':
         recovery_code = request.form.get('recovery_code', '')

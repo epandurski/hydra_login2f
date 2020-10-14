@@ -6,8 +6,8 @@ SUPPORTED_LANGUAGES = {'en': 'English', 'bg': 'Български'}
 
 def _get_language_choices(fallback):
     languages = environ.get('LANGUAGES', fallback)
-    languages = [l.strip() for l in languages.split(',')]
-    return [(l, SUPPORTED_LANGUAGES[l]) for l in languages if l in SUPPORTED_LANGUAGES]
+    languages = [lg.strip() for lg in languages.split(',')]
+    return [(lg, SUPPORTED_LANGUAGES[lg]) for lg in languages if lg in SUPPORTED_LANGUAGES]
 
 
 def _get_default_password_min_length(fallback):
