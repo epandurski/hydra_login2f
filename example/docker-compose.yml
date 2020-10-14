@@ -35,7 +35,7 @@ services:
     environment:
       - LOG_LEVEL=debug
     command:
-      migrate sql postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
+      migrate sql postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable --yes
     depends_on:
       - pg
     restart: on-failure
@@ -53,7 +53,7 @@ services:
     environment:
       - LOG_LEVEL=debug
       - DISABLE_TELEMETRY=1
-      - SYSTEM_SECRET=$HYDRA_SYSTEM_SECRET
+      - SECRETS_SYSTEM=$HYDRA_SYSTEM_SECRET
       - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg/${POSTGRES_DB}?sslmode=disable
       - OAUTH2_CONSENT_URL=http://$BROWSER_IDP_HOST:4488/consent
       - OAUTH2_LOGIN_URL=http://$BROWSER_IDP_HOST:4488/login
