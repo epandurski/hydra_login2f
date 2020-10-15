@@ -256,10 +256,13 @@ def choose_new_email(secret):
         return render_template('report_missing_recovery_code.html')
 
     if request.method == 'POST':
+        captcha_passed, captcha_error_message = verify_captcha()
         email = request.form['email'].strip()
         recovery_code = request.form.get('recovery_code', '')
         if utils.is_invalid_email(email):
             flash(gettext('The email address is invalid.'))
+        elif not captcha_passed:
+            flash(captcha_error_message)
         elif not verification_request.is_correct_recovery_code(recovery_code):
             try:
                 verification_request.register_code_failure()
@@ -280,7 +283,11 @@ def choose_new_email(secret):
                 login_challenge=verification_request.challenge_id,
             ))
 
-    response = make_response(render_template('choose_new_email.html', require_recovery_code=True))
+    response = make_response(render_template(
+        'choose_new_email.html',
+        require_recovery_code=True,
+        display_captcha=captcha.display_html,
+    ))
     response.headers['Cache-Control'] = 'no-store'
     return response
 

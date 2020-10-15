@@ -30,6 +30,11 @@
              required
              >
     </p>
+    {% if config.SHOW_CAPTCHA_ON_SIGNUP %}
+      <p>
+        {{display_captcha(get_locale()|string)|safe}}
+      </p>
+    {% endif %}
     <p>
       <input type="submit" value="{% trans %}Submit{% endtrans %}">
     </p>
