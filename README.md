@@ -7,8 +7,7 @@ two-factor authentication via email.
 
 ## Installation
 
-*hydra_login2f* can be deployed directly from a [docker
-image](https://hub.docker.com/r/epandurski/hydra_login2f/). You can
+*hydra_login2f* can be deployed directly from a docker image. You can
 find a working example in the `example/` directory.
 
 
