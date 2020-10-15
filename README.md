@@ -54,6 +54,11 @@ STYLE_URL=''
 # than their email account.
 USE_RECOVERY_CODE=True
 
+# Whether to hide the "remember me" checkbox from users. If this is set to
+# `True`, the "remember me" checkbox will not be shown. This might be useful
+# when saving the login credentials poses a risk.
+HIDE_REMEMBER_ME_CHECKBOX=False
+
 # Set this to the URL for ORY Hydra's admin API.
 HYDRA_ADMIN_URL='http://hydra:4445'
 
