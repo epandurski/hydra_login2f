@@ -36,7 +36,9 @@ CONSENT_PATH='/consent'
 # with ID=1234 would be 'user:1234'.
 SUBJECT_PREFIX=''
 
-# Set this to a random, long string, and keep it secret.
+# Set this to a random, long string. This secret is used only to sign
+# the session cookies which guide the users' experience, and therefore it
+# IS NOT of critical importance to keep this secret safe.
 SECRET_KEY='dummy-secret'
 
 # Set this to the name of your site, as it is known to your users.
