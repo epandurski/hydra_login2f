@@ -11,7 +11,7 @@ def _get_language_choices(fallback):
 
 
 def _get_default_password_min_length(fallback):
-    return 10 if environ.get('USE_RECOVERY_CODE', str(bool(fallback))).lower() == 'true' else 6
+    return 12 if environ.get('USE_RECOVERY_CODE', str(bool(fallback))).lower() == 'true' else 6
 
 
 class Configuration(metaclass=MetaFlaskEnv):
