@@ -102,7 +102,6 @@ def set_language(lang):
     response.set_cookie(
         current_app.config['LANGUAGE_COOKE_NAME'],
         lang,
-        path=current_app.config['LOGIN_PATH'],
         max_age=1000000000,
     )
     return response
