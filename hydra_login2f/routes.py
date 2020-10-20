@@ -91,6 +91,7 @@ def set_computer_code_cookie(response, computer_code):
         computer_code,
         max_age=1000000000,
         httponly=True,
+        path=current_app.config['LOGIN_PATH'],
         secure=not current_app.config['DEBUG'],
     )
 
@@ -98,7 +99,12 @@ def set_computer_code_cookie(response, computer_code):
 @login.route('/language/<lang>')
 def set_language(lang):
     response = redirect(request.args['to'])
-    response.set_cookie(current_app.config['LANGUAGE_COOKE_NAME'], lang, max_age=1000000000)
+    response.set_cookie(
+        current_app.config['LANGUAGE_COOKE_NAME'],
+        lang,
+        path=current_app.config['LOGIN_PATH'],
+        max_age=1000000000,
+    )
     return response
 
 
@@ -439,6 +445,7 @@ def login_form():
                 current_app.config['LOGIN_VERIFICATION_COOKE_NAME'],
                 verification_cookie,
                 httponly=True,
+                path=current_app.config['LOGIN_PATH'],
                 secure=not current_app.config['DEBUG'],
             )
             set_computer_code_cookie(response, computer_code)
